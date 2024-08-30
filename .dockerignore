@@ -1,0 +1,307 @@
+# flyctl launch added from .gitignore
+# Byte-compiled / optimized / DLL files
+**\__pycache__
+**\*.py[cod]
+**\*$py.class
+
+# C extensions
+**\*.so
+
+# Distribution / packaging
+**\.Python
+**\build
+**\develop-eggs
+**\dist
+**\downloads
+**\eggs
+**\.eggs
+**\lib
+**\lib64
+**\parts
+**\sdist
+**\var
+**\wheels
+**\share\python-wheels
+**\*.egg-info
+**\.installed.cfg
+**\*.egg
+**\MANIFEST
+
+# Virtual environments
+**\venv
+**\ENV
+**\env
+**\.venv
+**\.env
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+**\*.manifest
+**\*.spec
+
+# Installer logs
+**\pip-log.txt
+**\pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+**\htmlcov
+**\.tox
+**\.nox
+**\.coverage
+**\.coverage.*
+**\.cache
+**\nosetests.xml
+**\coverage.xml
+**\*.cover
+**\*.py,cover
+**\.hypothesis
+**\.pytest_cache
+**\cover
+
+# Translations
+**\*.mo
+**\*.pot
+
+# Django stuff:
+**\*.log
+**\local_settings.py
+**\db.sqlite3
+
+# Flask stuff:
+**\instance
+**\.webassets-cache
+
+# Scrapy stuff:
+**\.scrapy
+
+# Sphinx documentation
+**\docs\_build
+
+# PyBuilder
+**\target
+
+# Jupyter Notebook
+**\.ipynb_checkpoints
+
+# IPython
+**\profile_default
+**\ipython_config.py
+
+# pyenv
+**\.python-version
+
+# celery beat schedule file
+**\celerybeat-schedule
+
+# SageMath parsed files
+**\*.sage.py
+
+# Environments
+**\.env
+**\.env.*
+**\.venv
+**\venv
+**\ENV
+**\env.bak
+**\env
+
+# Spyder project settings
+**\.spyderproject
+**\.spyproject
+
+# Rope project settings
+**\.ropeproject
+
+# mkdocs documentation
+site
+
+# mypy
+**\.mypy_cache
+**\.dmypy.json
+**\dmypy.json
+
+# Pyre type checker
+**\.pyre
+
+# FastAPI specific
+**\*.db
+
+# flyctl launch added from .venv\.gitignore
+.venv\**\*
+
+# flyctl launch added from .venv\Lib\site-packages\llama_index\cli\new_package\common\.gitignore
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\llama_index\_static
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.DS_Store
+# Byte-compiled / optimized / DLL files
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\__pycache__
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\*.py[cod]
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\*$py.class
+
+# C extensions
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\*.so
+
+# Distribution / packaging
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.Python
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\bin
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\build
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\develop-eggs
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\dist
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\downloads
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\eggs
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.eggs
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\etc
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\include
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\lib
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\lib64
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\parts
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\sdist
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\share
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\var
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\wheels
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\pip-wheel-metadata
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\share\python-wheels
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\*.egg-info
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.installed.cfg
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\*.egg
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\*.manifest
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\*.spec
+
+# Installer logs
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\pip-log.txt
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\htmlcov
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.tox
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.nox
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.coverage
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.coverage.*
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.cache
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\nosetests.xml
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\coverage.xml
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\*.cover
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\*.py,cover
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.hypothesis
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.pytest_cache
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.ruff_cache
+
+# Translations
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\*.mo
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\*.pot
+
+# Django stuff:
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\*.log
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\local_settings.py
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\db.sqlite3
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\db.sqlite3-journal
+
+# Flask stuff:
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\instance
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.webassets-cache
+
+# Scrapy stuff:
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.scrapy
+
+# Sphinx documentation
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\docs\_build
+
+# PyBuilder
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\target
+
+# Jupyter Notebook
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.ipynb_checkpoints
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\notebooks
+
+# IPython
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\profile_default
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\ipython_config.py
+
+# pyenv
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\__pypackages__
+
+# Celery stuff
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\celerybeat-schedule
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\celerybeat.pid
+
+# SageMath parsed files
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\*.sage.py
+
+# Environments
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.env
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.venv
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\env
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\venv
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\ENV
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\env.bak
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\venv.bak
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\pyvenv.cfg
+
+# Spyder project settings
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.spyderproject
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.spyproject
+
+# Rope project settings
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.ropeproject
+
+# mkdocs documentation
+.venv\Lib\site-packages\llama_index\cli\new_package\common\site
+
+# mypy
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.mypy_cache
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.dmypy.json
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\dmypy.json
+
+# Pyre type checker
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.pyre
+
+# Jetbrains
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.idea
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\modules
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\*.swp
+
+# VsCode
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\.vscode
+
+# pipenv
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\Pipfile
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\Pipfile.lock
+
+# pyright
+.venv\Lib\site-packages\llama_index\cli\new_package\common\**\pyrightconfig.json
+
+# flyctl launch added from .venv\Lib\site-packages\llama_index\core\_static\.gitignore
+.venv\Lib\site-packages\llama_index\core\_static\**\_static\tiktoken_cache\*
+.venv\Lib\site-packages\llama_index\core\_static\**\_static\nltk_cache\*
+
+# flyctl launch added from .venv\Lib\site-packages\llama_index\core\_static\nltk_cache\.gitignore
+# Include this file
+!.venv\Lib\site-packages\llama_index\core\_static\nltk_cache\**\.gitignore
+
+# flyctl launch added from .venv\Lib\site-packages\llama_index\core\_static\tiktoken_cache\.gitignore
+# Include this file
+!.venv\Lib\site-packages\llama_index\core\_static\tiktoken_cache\**\.gitignore
+
+# flyctl launch added from .venv\Lib\site-packages\llama_index\legacy\_static\nltk_cache\.gitignore
+# Include this file
+!.venv\Lib\site-packages\llama_index\legacy\_static\nltk_cache\**\.gitignore
+
+# flyctl launch added from .venv\Lib\site-packages\llama_index\legacy\_static\tiktoken_cache\.gitignore
+# Include this file
+!.venv\Lib\site-packages\llama_index\legacy\_static\tiktoken_cache\**\.gitignore
+fly.toml
