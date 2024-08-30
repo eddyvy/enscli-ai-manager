@@ -1,6 +1,6 @@
 from typing import Annotated
 from dotenv import load_dotenv
-from fastapi import FastAPI, File, Form, UploadFile
+from fastapi import FastAPI, File, Form
 import os
 import secrets
 from fastapi import Depends, HTTPException, status
@@ -9,8 +9,8 @@ import logging
 from fastapi import Depends, HTTPException
 from fastapi.security import HTTPBasicCredentials
 from pydantic import BaseModel
-from app.embed import execute_embedding
-from app.query import index_query
+from embed import execute_embedding
+from query import index_query
 from llama_index.embeddings.openai import OpenAIEmbeddingModelType
 
 security = HTTPBasic()
