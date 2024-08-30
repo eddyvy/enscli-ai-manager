@@ -13,19 +13,25 @@ from embed import execute_embedding
 from query import index_query
 from llama_index.embeddings.openai import OpenAIEmbeddingModelType
 
+load_dotenv()
+
 security = HTTPBasic()
 
 def verify_credentials(credentials: HTTPBasicCredentials = Depends(security)):
     user_name = os.getenv('BASIC_AUTH_USERNAME')
     user_password = os.getenv('BASIC_AUTH_PASSWORD')
 
+    if not user_name or not user_password:
+        raise HTTPException(status_code=500, detail="Basic Auth config not found")
+    
+    if not credentials.username or not credentials.password:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+
     correct_username = secrets.compare_digest(credentials.username, user_name)
     correct_password = secrets.compare_digest(credentials.password, user_password)
     if not (correct_username and correct_password):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
 
-
-load_dotenv()
 
 app = FastAPI()
 
