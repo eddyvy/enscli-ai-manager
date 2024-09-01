@@ -5,6 +5,8 @@ from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.core import VectorStoreIndex
 from llama_index.vector_stores.astra_db import AstraDBVectorStore
 
+from index_manager import IndexManager
+
 
 def execute_embedding(content: str, project_name: str, model: str) -> None:
     # Astra DB config
@@ -39,7 +41,9 @@ def execute_embedding(content: str, project_name: str, model: str) -> None:
     nodes = splitter.get_nodes_from_documents(documents)
 
     # Create index and store it
-    VectorStoreIndex(
+    index = VectorStoreIndex(
         nodes=nodes,
         storage_context=storage_context,
     )
+
+    IndexManager.instance().save_index(project_name, index)

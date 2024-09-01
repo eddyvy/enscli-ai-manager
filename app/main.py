@@ -17,23 +17,27 @@ load_dotenv()
 
 security = HTTPBasic()
 
+
 def verify_credentials(credentials: HTTPBasicCredentials = Depends(security)):
     user_name = os.getenv('BASIC_AUTH_USERNAME')
     user_password = os.getenv('BASIC_AUTH_PASSWORD')
 
     if not user_name or not user_password:
-        raise HTTPException(status_code=500, detail="Basic Auth config not found")
-    
+        raise HTTPException(
+            status_code=500, detail="Basic Auth config not found")
+
     if not credentials.username or not credentials.password:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
 
     correct_username = secrets.compare_digest(credentials.username, user_name)
-    correct_password = secrets.compare_digest(credentials.password, user_password)
+    correct_password = secrets.compare_digest(
+        credentials.password, user_password)
     if not (correct_username and correct_password):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
 
 
 app = FastAPI()
+
 
 @app.get("/health")
 def get_health():
@@ -46,15 +50,21 @@ async def create_file(
     file: Annotated[bytes, File()],
     model: str = Form(OpenAIEmbeddingModelType.TEXT_EMBED_3_SMALL),
 ):
-    content: str = file.decode("utf-8")
-    execute_embedding(content, project, model)
+    try:
+        content: str = file.decode("utf-8")
+        execute_embedding(content, project, model)
 
-    return { "success": True }
+        return {"success": True}
+    except Exception as e:
+        logging.error(str(e))
+        raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
+
 
 class QueryRequest(BaseModel):
     query: str
     top_k: int
     model: str = OpenAIEmbeddingModelType.TEXT_EMBED_3_SMALL
+
 
 @app.post("/{project}/query")
 async def post_project_query(project: str, req: QueryRequest, credentials: HTTPBasicCredentials = Depends(verify_credentials)):
@@ -64,7 +74,8 @@ async def post_project_query(project: str, req: QueryRequest, credentials: HTTPB
         model = req.model
 
         if query is None or top_k is None:
-            raise HTTPException(status_code=400, detail="Missing 'query' or 'top_k' or 'model' request body params")
+            raise HTTPException(
+                status_code=400, detail="Missing 'query' or 'top_k' or 'model' request body params")
 
         chunks = index_query(project, query, top_k, model)
 
@@ -72,4 +83,18 @@ async def post_project_query(project: str, req: QueryRequest, credentials: HTTPB
     except Exception as e:
         logging.error(str(e))
         raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
-    
+
+
+class ChatRequest(BaseModel):
+    message: str
+    top_k: int
+    model: str = "gpt-4o-mini"
+
+
+@app.post("/{project}/chat")
+async def post_project_char(project: str, req: ChatRequest, credentials: HTTPBasicCredentials = Depends(verify_credentials)):
+    try:
+        return "abcd-efgh"
+    except Exception as e:
+        logging.error(str(e))
+        raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
