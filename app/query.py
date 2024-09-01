@@ -2,8 +2,9 @@ from typing import List
 from index_manager import IndexManager
 
 
-def index_query(project_name: str, query: str, top_k: int) -> List[str]:
-    index = IndexManager.instance().get_index(project_name)
+def index_query(project_name: str, query: str, top_k: int, embed_model: str, embedding_dimension: int) -> List[str]:
+    index = IndexManager.instance().get_index(
+        project_name, embed_model, embedding_dimension)
 
     retriever = index.as_retriever(
         vector_store_query_mode="mmr",

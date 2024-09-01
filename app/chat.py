@@ -8,7 +8,11 @@ from index_manager import IndexManager
 custom_prompt = """
 You are a chatbot, able to have normal interactions, as well as talk about the provided context.
 Here are the relevant documents for the context:
+
+```markdown
 {context_str}
+```
+
 Instruction: Use the previous chat history, or the context above, to interact and help the user.
 """
 
@@ -19,10 +23,13 @@ def send_message(
     top_k: int,
     session_id: str,
     model: str,
-    temperature: float
+    temperature: float,
+    embed_model: str,
+    embedding_dimension: int
 ) -> str:
     llm = OpenAI(model=model, temperature=temperature)
-    index: VectorStoreIndex = IndexManager.instance().get_index(project_name)
+    index: VectorStoreIndex = IndexManager.instance().get_index(
+        project_name, embed_model, embedding_dimension)
 
     chat_memory = ChatManager.instance().get_chat_memory(session_id)
 

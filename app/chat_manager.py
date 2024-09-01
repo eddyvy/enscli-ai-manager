@@ -20,7 +20,7 @@ class ChatManager:
 
     def get_chat_memory(self, session_id):
         return ChatMemoryBuffer.from_defaults(
-            token_limit=3000,
+            token_limit=4000,
             chat_store=self.__chat_store,
             chat_store_key=session_id,
         )

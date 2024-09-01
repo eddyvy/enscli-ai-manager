@@ -8,7 +8,7 @@ from llama_index.vector_stores.astra_db import AstraDBVectorStore
 from index_manager import IndexManager
 
 
-def execute_embedding(content: str, project_name: str) -> None:
+def execute_embedding(content: str, project_name: str, embed_model_name: str, buffer_size: int, breakpoint_percentile_threshold: int, embedding_dimension: int) -> None:
     # Astra DB config
     astra_endpoint = os.environ["ASTRA_DB_ENDPOINT"]
     astra_token = os.environ["ASTRA_DB_TOKEN"]
@@ -18,7 +18,7 @@ def execute_embedding(content: str, project_name: str) -> None:
 
     # Choose embedding model.
     embed_model = OpenAIEmbedding(
-        model=OpenAIEmbeddingModelType.TEXT_EMBED_ADA_002
+        model=embed_model_name,
     )
 
     # Astra DB vector store
@@ -27,15 +27,15 @@ def execute_embedding(content: str, project_name: str) -> None:
         api_endpoint=astra_endpoint,
         collection_name=project_name,
         # Dimensions: https://docs.datastax.com/en/astra-db-serverless/get-started/concepts.html
-        embedding_dimension=1536,
+        embedding_dimension=embedding_dimension,
     )
     storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
     # Process the content into nodes
     documents = [Document(text=content)]
     splitter = SemanticSplitterNodeParser(
-        buffer_size=1,
-        breakpoint_percentile_threshold=95,
+        buffer_size=buffer_size,
+        breakpoint_percentile_threshold=breakpoint_percentile_threshold,
         embed_model=embed_model
     )
     nodes = splitter.get_nodes_from_documents(documents)
@@ -44,6 +44,7 @@ def execute_embedding(content: str, project_name: str) -> None:
     index = VectorStoreIndex(
         nodes=nodes,
         storage_context=storage_context,
+        verbose=True
     )
 
     IndexManager.instance().save_index(project_name, index)
