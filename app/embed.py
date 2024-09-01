@@ -1,14 +1,14 @@
 import os
 from llama_index.core import Document, StorageContext
 from llama_index.core.node_parser import SemanticSplitterNodeParser
-from llama_index.embeddings.openai import OpenAIEmbedding
+from llama_index.embeddings.openai import OpenAIEmbedding, OpenAIEmbeddingModelType
 from llama_index.core import VectorStoreIndex
 from llama_index.vector_stores.astra_db import AstraDBVectorStore
 
 from index_manager import IndexManager
 
 
-def execute_embedding(content: str, project_name: str, model: str) -> None:
+def execute_embedding(content: str, project_name: str) -> None:
     # Astra DB config
     astra_endpoint = os.environ["ASTRA_DB_ENDPOINT"]
     astra_token = os.environ["ASTRA_DB_TOKEN"]
@@ -18,7 +18,7 @@ def execute_embedding(content: str, project_name: str, model: str) -> None:
 
     # Choose embedding model.
     embed_model = OpenAIEmbedding(
-        model=model
+        model=OpenAIEmbeddingModelType.TEXT_EMBED_ADA_002
     )
 
     # Astra DB vector store

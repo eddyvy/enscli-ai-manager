@@ -1,7 +1,7 @@
 import os
 
 from llama_index.core import StorageContext
-from llama_index.embeddings.openai import OpenAIEmbedding
+from llama_index.embeddings.openai import OpenAIEmbedding, OpenAIEmbeddingModelType
 from llama_index.core import VectorStoreIndex
 from llama_index.vector_stores.astra_db import AstraDBVectorStore
 
@@ -22,10 +22,10 @@ class IndexManager:
             IndexManager()
         return IndexManager.__instance
 
-    def save_index(self, project_name, index):
+    def save_index(self, project_name: str, index: VectorStoreIndex):
         self.__project_index[project_name] = index
 
-    def load_save_index(self, project_name, embed_model):
+    def load_save_index(self, project_name):
         # Astra DB config
         astra_endpoint = os.environ["ASTRA_DB_ENDPOINT"]
         astra_token = os.environ["ASTRA_DB_TOKEN"]
@@ -34,7 +34,7 @@ class IndexManager:
             raise ValueError("Astra DB config not found")
 
         embed_model = OpenAIEmbedding(
-            model=embed_model
+            model=OpenAIEmbeddingModelType.TEXT_EMBED_ADA_002
         )
 
         # Astra DB vector store
@@ -56,7 +56,7 @@ class IndexManager:
 
         self.save_index(project_name, index)
 
-    def get_index(self, project_name, embed_model):
+    def get_index(self, project_name: str) -> VectorStoreIndex:
         if project_name not in self.__project_index:
-            self.load_save_index(project_name, embed_model)
+            self.load_save_index(project_name)
         return self.__project_index.get(project_name)

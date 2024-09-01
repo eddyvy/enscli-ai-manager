@@ -9,9 +9,9 @@ import logging
 from fastapi import Depends, HTTPException
 from fastapi.security import HTTPBasicCredentials
 from pydantic import BaseModel
+from chat import send_message
 from embed import execute_embedding
 from query import index_query
-from llama_index.embeddings.openai import OpenAIEmbeddingModelType
 
 load_dotenv()
 
@@ -48,11 +48,10 @@ def get_health():
 async def create_file(
     project: str,
     file: Annotated[bytes, File()],
-    model: str = Form(OpenAIEmbeddingModelType.TEXT_EMBED_3_SMALL),
 ):
     try:
         content: str = file.decode("utf-8")
-        execute_embedding(content, project, model)
+        execute_embedding(content, project)
 
         return {"success": True}
     except Exception as e:
@@ -63,7 +62,6 @@ async def create_file(
 class QueryRequest(BaseModel):
     query: str
     top_k: int
-    model: str = OpenAIEmbeddingModelType.TEXT_EMBED_3_SMALL
 
 
 @app.post("/{project}/query")
@@ -71,13 +69,12 @@ async def post_project_query(project: str, req: QueryRequest, credentials: HTTPB
     try:
         query = req.query
         top_k = req.top_k
-        model = req.model
 
         if query is None or top_k is None:
             raise HTTPException(
-                status_code=400, detail="Missing 'query' or 'top_k' or 'model' request body params")
+                status_code=400, detail="Missing 'query' or 'top_k' request body params")
 
-        chunks = index_query(project, query, top_k, model)
+        chunks = index_query(project, query, top_k)
 
         return chunks
     except Exception as e:
@@ -87,14 +84,16 @@ async def post_project_query(project: str, req: QueryRequest, credentials: HTTPB
 
 class ChatRequest(BaseModel):
     message: str
-    top_k: int
+    session_id: str = ""
     model: str = "gpt-4o-mini"
+    temperature: float = 0.1
+    top_k: int = 3
 
 
 @app.post("/{project}/chat")
 async def post_project_char(project: str, req: ChatRequest, credentials: HTTPBasicCredentials = Depends(verify_credentials)):
     try:
-        return "abcd-efgh"
+        return send_message(project, req.message, req.top_k, req.session_id, req.model, req.temperature)
     except Exception as e:
         logging.error(str(e))
         raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
