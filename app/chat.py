@@ -35,7 +35,7 @@ def send_message(
         similarity_top_k=top_k,
         vector_store_query_mode="mmr",
         vector_store_kwargs={"mmr_prefetch_factor": 4},
-        verbose=True
+        verbose=False
     )
 
     return chat_engine.chat(message)
